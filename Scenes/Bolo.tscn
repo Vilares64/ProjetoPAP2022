@@ -1,0 +1,117 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/4.png" type="Texture" id=1]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/7.png" type="Texture" id=2]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/5.png" type="Texture" id=3]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/2.png" type="Texture" id=4]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/6.png" type="Texture" id=6]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/3.png" type="Texture" id=7]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/attack/8.png" type="Texture" id=8]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/2.png" type="Texture" id=9]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/4.png" type="Texture" id=10]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/6.png" type="Texture" id=11]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/8.png" type="Texture" id=13]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/9.png" type="Texture" id=14]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/7.png" type="Texture" id=15]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/5.png" type="Texture" id=16]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/damage/2.png" type="Texture" id=17]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/damage/1.png" type="Texture" id=18]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/damage/3.png" type="Texture" id=19]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/1.png" type="Texture" id=20]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/damage/4.png" type="Texture" id=21]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/3.png" type="Texture" id=23]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/4.png" type="Texture" id=24]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/6.png" type="Texture" id=25]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/7.png" type="Texture" id=26]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Scripts/Bolo.gd" type="Script" id=27]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/walking/5.png" type="Texture" id=28]
+[ext_resource path="res://Assets/AsAventurasDeLeBaguette/Assets/Inimigos/eclair/death/3.png" type="Texture" id=29]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 36.5, 22 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "ataque",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 29 ), ExtResource( 10 ), ExtResource( 16 ), ExtResource( 11 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "death",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "hit",
+"speed": 7.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 5.625, 27.0625 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 34.5, 17.5 )
+
+[node name="Bolo" type="Node2D"]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+position = Vector2( 1, 0 )
+collision_layer = 4
+collision_mask = 3
+script = ExtResource( 27 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( -4.5, 9 )
+shape = SubResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+position = Vector2( -1.25, -3.5 )
+scale = Vector2( 0.121875, 0.122276 )
+frames = SubResource( 2 )
+animation = "walk"
+frame = 4
+playing = true
+flip_h = true
+
+[node name="RightRay" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( 2, 9 )
+scale = Vector2( 1.8, 5 )
+enabled = true
+cast_to = Vector2( 17.5, 0 )
+collision_mask = 7
+
+[node name="DownRay" type="RayCast2D" parent="KinematicBody2D"]
+position = Vector2( 36, 2 )
+scale = Vector2( 2, 1 )
+enabled = true
+
+[node name="AttackArea" type="Area2D" parent="KinematicBody2D"]
+position = Vector2( -1, -1 )
+
+[node name="HitBox" type="CollisionShape2D" parent="KinematicBody2D/AttackArea"]
+position = Vector2( 40.375, 7 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="DamageArea" type="Area2D" parent="KinematicBody2D"]
+position = Vector2( 0, 2 )
+
+[node name="HitBox" type="CollisionShape2D" parent="KinematicBody2D/DamageArea"]
+position = Vector2( -3.5, 9.5 )
+shape = SubResource( 5 )
+
+[connection signal="ready" from="KinematicBody2D" to="KinematicBody2D" method="_on_KinematicBody2D_ready"]
+[connection signal="animation_finished" from="KinematicBody2D/AnimatedSprite" to="KinematicBody2D" method="_on_AnimatedSprite_animation_finished"]
+[connection signal="frame_changed" from="KinematicBody2D/AnimatedSprite" to="KinematicBody2D" method="_on_AnimatedSprite_frame_changed"]
+[connection signal="body_entered" from="KinematicBody2D/AttackArea" to="KinematicBody2D" method="_on_AttackArea_body_entered"]
+[connection signal="area_entered" from="KinematicBody2D/DamageArea" to="KinematicBody2D" method="_on_DamageArea_area_entered"]
